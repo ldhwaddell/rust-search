@@ -1,3 +1,9 @@
+// Argument handling
+pub mod cli;
+
+// Extract content from the files
+pub mod extract;
+
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
