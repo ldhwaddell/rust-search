@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use clap::{Parser, Subcommand};
 
 #[derive(Parser, Debug)]
@@ -10,6 +12,9 @@ use clap::{Parser, Subcommand};
 pub struct Arguments {
     #[command(subcommand)]
     pub command: Commands,
+
+    #[arg(default_value = "./.search_model.json", help = "The path to the model")]
+    pub path: PathBuf,
 }
 
 #[derive(Subcommand, Debug)]
@@ -19,13 +24,14 @@ pub enum Commands {
         /// The search query
         query: Option<String>,
 
-        /// Interactive mode flag
-        #[arg(short, long, help = "Interactive mode: stays open until you quit")]
-        interactive: bool,
+        // /// Interactive mode flag
+        // #[arg(short, long, help = "Interactive mode: stays open until you quit")]
+        // interactive: bool,
     },
     /// Add a new entry
     Add {
-        #[arg(help = "The entry to add to the database")]
-        entry: String,
+        #[arg(help = "A list of paths to files or folders to add to the database")]
+        paths: Vec<PathBuf>,
     },
+
 }
