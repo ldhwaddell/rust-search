@@ -30,8 +30,8 @@ pub enum Commands {
     },
     /// Add a new entry
     Add {
-        #[arg(help = "A list of paths to files or folders to add to the database")]
-        paths: Vec<PathBuf>,
+        #[arg(help = "A path to a file to add to the model")]
+        path: PathBuf,
     },
 
 }
