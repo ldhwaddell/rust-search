@@ -3,3 +3,9 @@
 /sample
 
 .DS_Store
+
+# Ignore files created during testing
+*.json
+
+# Ignore scratch notes
+notes.md
