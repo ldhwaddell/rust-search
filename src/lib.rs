@@ -1,20 +1,8 @@
 // Argument handling
-pub mod cli;
+pub mod arguments;
 
 // Extract content from the files
 pub mod extract;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+// The model we query
+pub mod model;
