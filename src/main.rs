@@ -1,21 +1,31 @@
+use std::process::ExitCode;
+
 use clap::Parser;
+use std::error::Error;
 
-use rust_search::cli::{Arguments, Commands};
+use rust_search::arguments::{Arguments, Commands};
+use rust_search::model::Model;
 
-fn main() {
+fn run() -> Result<(), Box<dyn Error>> {
     let args = Arguments::parse();
 
+    // Build the model from user or default path
+    let mut model = Model::from(&args.path)?;
+
     match &args.command {
-        Commands::Search { query, interactive } => search_mode(query, interactive),
+        Commands::Add { path } => model.add(path)?,
         _ => (),
     }
 
-    fn search_mode(query: &Option<String>, interactive: &bool) {
-        if !interactive {
-            // Query model here
-            return;
-        }
+    Ok(())
+}
 
-        // Start interactive session
+fn main() -> ExitCode {
+    match run() {
+        Ok(()) => ExitCode::SUCCESS,
+        Err(e) => {
+            eprintln!("Error: {}", e);
+            ExitCode::FAILURE
+        }
     }
 }
