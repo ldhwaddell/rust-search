@@ -8,3 +8,6 @@ pub mod extract;
 pub mod model;
 // The lexer to tokenize raw text
 pub mod lexer;
+
+// All stemming related logic
+pub mod snowball;
