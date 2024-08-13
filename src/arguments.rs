@@ -24,9 +24,9 @@ pub enum Commands {
         /// The search query
         query: Option<String>,
 
-        // /// Interactive mode flag
-        // #[arg(short, long, help = "Interactive mode: stays open until you quit")]
-        // interactive: bool,
+        /// Interactive mode flag
+        #[arg(short, long, help = "Interactive mode: stays open until you quit")]
+        interactive: bool,
     },
     /// Add a new entry
     Add {
