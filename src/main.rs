@@ -40,7 +40,7 @@ fn run_interactive_search(model: &Model) -> Result<(), Box<dyn Error>> {
         let mut input = String::new();
         io::stdin().read_line(&mut input)?;
 
-        if input.eq_ignore_ascii_case(":q") {
+        if input.eq_ignore_ascii_case("quit") {
             break;
         }
 
